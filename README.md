@@ -1,0 +1,2 @@
+# meetSummarizer
+Neog hackthon project
