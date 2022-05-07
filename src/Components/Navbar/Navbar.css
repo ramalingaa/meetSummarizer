@@ -1,0 +1,17 @@
+.navbar{
+    background-color: var(--black-color);
+    color:var(--primary-color);
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo{
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.action-links{
+    cursor: pointer;
+}

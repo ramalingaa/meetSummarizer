@@ -1,0 +1,19 @@
+.summary-result-container{
+    background-color: var(--off-white);
+    text-align: justify;
+    padding: 2rem;
+    width: 60%;
+    margin: 2rem auto;
+    box-shadow: 0 0 10px 2px rgb(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.text-center{
+    text-align: center;
+}
+@media screen and (max-width:700px) {
+    .summary-result-container{
+        width: 95%;
+    }
+}
