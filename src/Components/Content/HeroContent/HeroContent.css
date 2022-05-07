@@ -62,3 +62,19 @@
     border: 2px solid var(--primary-color);
     border-radius: 0.4rem;
 }
+
+input[type = "file"]{
+    display: none;
+  }
+.hero-upload-wrapper {
+      display:flex;
+      gap: 1rem;
+      align-items: center;
+}
+.filename {
+    font-size: 1.5rem;
+}
+.error-msg {
+    font-size: 1.5rem;
+    color: var(--error-color);
+}
