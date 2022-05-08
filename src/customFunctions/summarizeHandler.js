@@ -15,7 +15,11 @@ const summarizeHandler = async (text, key, setIsLoading, setSummary) => {
   };
   try {
     const response = await axios(config);
-    setIsLoading(() => false);
+    setIsLoading((prev) => ({
+      ...prev,
+      isSummaryLoading: false,
+      isUploadLoading: false,
+    }));
     setSummary(() => response.data.output[0].text);
   } catch (e) {
     console.log("in summary", e);

@@ -5,21 +5,21 @@ const clickHandler = (apiToken, audioUrl, setResponseStatus, setIsLoading) => {
     baseURL: "https://api.assemblyai.com/v2",
     headers: {
       authorization: apiToken,
-      "content-type": "application/json"
-    }
+      "content-type": "application/json",
+    },
   });
-  
-  if(audioUrl) {
+
+  if (audioUrl) {
     assembly
-    .post("/transcript", {
-      audio_url: audioUrl
-    })
-    .then((res) => {
-      setIsLoading(() => true);
-      setResponseStatus(() => ({ status: res.data.status, id: res.data.id }));
-      console.log(res.data.status);
-    })
-    .catch((err) => console.log("in clickhandler", err));
+      .post("/transcript", {
+        audio_url: audioUrl,
+      })
+      .then((res) => {
+        setIsLoading((prev) => ({ ...prev, isSummaryLoading: true }));
+        setResponseStatus(() => ({ status: res.data.status, id: res.data.id }));
+        console.log(res.data.status);
+      })
+      .catch((err) => console.log("in clickhandler", err));
   }
 };
 export { clickHandler };

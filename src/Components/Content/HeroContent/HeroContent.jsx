@@ -5,6 +5,7 @@ import {
   changeHandler,
   clickHandler,
   summarizeHandler,
+  pasteUrlHandler,
 } from "../../../customFunctions/index-functions";
 import { useSummary } from "../../../context/summaryContext";
 import ReactLoading from "react-loading";
@@ -13,16 +14,12 @@ const HeroContent = () => {
   const [audioUrl, setAudioUrl] = useState("");
   const [pasteFileUrl, setPasteFileUrl] = useState("");
   const [responseStatus, setResponseStatus] = useState({ status: "", id: "" });
-  const [isLoading, setIsLoading] = useState({
-    isSummaryLoading: false,
-    isUploadLoading: false,
-  });
   const [fileName, setFileName] = useState("");
   const [error, setError] = useState({ sizeError: "" });
   const url = "https://api.cloudinary.com/v1_1/demo/auto/upload";
   const apiToken = "57abb67a2c924791b6a26572ee153ca2";
   const key = "b1666e78-926a-4aa8-ad25-7da19547944a";
-  const { setSummary } = useSummary();
+  const { setSummary, isLoading, setIsLoading } = useSummary();
 
   useEffect(() => {
     if (
@@ -84,14 +81,21 @@ const HeroContent = () => {
               </label>
               {fileName && <p className="filename">{fileName}</p>}
             </div>
-            {isLoading && <ReactLoading type="spinningBubbles" />}
+            {isLoading.isUploadLoading && (
+              <ReactLoading type="bars" className="loader" />
+            )}
             <p className="error-msg">{error.sizeError}</p>
             <input
               className="hero-input"
               type="url"
+              pattern="https://.*"
+              value={pasteFileUrl}
               name="url-text"
               id="url-text"
-              placeholder="Paste URL"
+              placeholder="Paste URL to your file"
+              onChange={(e) =>
+                pasteUrlHandler(e, setAudioUrl, setPasteFileUrl, setError)
+              }
             />
           </div>
           <div>
@@ -110,22 +114,7 @@ const HeroContent = () => {
             </button>
           </div>
         </div>
-        {isLoading && <p>Content is loading</p>}
-        <p className="error-msg">{error.sizeError}</p>
-        <input
-          className="hero-input"
-          type="url"
-          pattern="https://.*"
-          value={pasteFileUrl}
-          name="url-text"
-          id="url-text"
-          placeholder="Paste URL to your file"
-          onChange={(e) => pasteUrlHandler(e, setAudioUrl, setPasteFileUrl, setError)}
-        />
       </div>
-      <button className="cta-btn-primary" onClick={() =>
-          clickHandler(apiToken, audioUrl, setResponseStatus, setIsLoading)
-      }>Summarize</button>
     </main>
   );
 };
