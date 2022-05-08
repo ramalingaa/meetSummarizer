@@ -16,9 +16,9 @@
 }
 
 .hero-wrapper{
-    width: fit-content;
     display: flex;
     gap: 1rem;
+    padding: 1rem;
     flex-direction: column;
     justify-content: center;
 }
@@ -98,4 +98,29 @@ input[type = "file"]{
 .error-msg {
     font-size: 1.5rem;
     color: var(--error-color);
+}
+
+.loader{
+    color:var(--primary-color);
+}
+.summarize-loader{
+    margin: 0 auto;
+}
+
+@media screen and (max-width:800px) {
+    .hero-content-cont {
+        display: block;
+    }
+
+    .cta-btn-primary {
+        margin-top: 1rem;
+    }
+
+    .hero-header {
+        width: 95%;
+    }
+
+    .hero {
+        min-height: 65vh;
+    }
 }
