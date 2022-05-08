@@ -71,6 +71,7 @@ const HeroContent = () => {
       <button className="cta-btn-primary" onClick={() =>
             clickHandler(apiToken, audioUrl, setResponseStatus, setIsLoading)
           }>Summarize</button>
+    
     </main>
   );
 };
