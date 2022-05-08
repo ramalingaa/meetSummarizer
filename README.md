@@ -21,11 +21,6 @@ Home Page
 - Oneai Studio 
 
 
-## Authors
-
-- [@Ramalinga](https://www.github.com/ramalingaa)
-
-
 ## Feedback
 
 If you have any feedback, please reach out to us at ramalinga.kalagotla@gmail.com
