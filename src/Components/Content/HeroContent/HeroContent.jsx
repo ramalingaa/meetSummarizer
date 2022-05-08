@@ -1,15 +1,16 @@
 import axios from "axios"
 import React, { useState, useEffect } from "react";
 import "./HeroContent.css";
-import { changeHandler, clickHandler, summarizeHandler } from "../../../customFunctions/index-functions"
+import { changeHandler, clickHandler, summarizeHandler, pasteUrlHandler } from "../../../customFunctions/index-functions"
 import { useSummary } from "../../../context/summaryContext"
 
 const HeroContent = () => {
   const [audioUrl, setAudioUrl] = useState("");
+  const [pasteFileUrl, setPasteFileUrl] = useState("");
   const [responseStatus, setResponseStatus] = useState({ status: "", id: "" });
   const [isLoading, setIsLoading] = useState(false);
   const [fileName, setFileName] = useState("");
-  const [error, setError] = useState({sizeError:""})
+  const [error, setError] = useState({sizeError:""});
   const url = "https://api.cloudinary.com/v1_1/demo/auto/upload";
   const apiToken = "57abb67a2c924791b6a26572ee153ca2";
   const key = "b1666e78-926a-4aa8-ad25-7da19547944a";
@@ -63,15 +64,17 @@ const HeroContent = () => {
         <input
           className="hero-input"
           type="url"
+          pattern="https://.*"
+          value={pasteFileUrl}
           name="url-text"
           id="url-text"
-          placeholder="Paste URL"
+          placeholder="Paste URL to your file"
+          onChange={(e) => pasteUrlHandler(e, setAudioUrl, setPasteFileUrl, setError)}
         />
       </div>
       <button className="cta-btn-primary" onClick={() =>
-            clickHandler(apiToken, audioUrl, setResponseStatus, setIsLoading)
-          }>Summarize</button>
-    
+          clickHandler(apiToken, audioUrl, setResponseStatus, setIsLoading)
+      }>Summarize</button>
     </main>
   );
 };

@@ -1,6 +1,6 @@
 import axios from "axios";
 const clickHandler = (apiToken, audioUrl, setResponseStatus, setIsLoading) => {
-    console.log(audioUrl)
+  console.log(audioUrl);
   const assembly = axios.create({
     baseURL: "https://api.assemblyai.com/v2",
     headers: {
@@ -8,7 +8,9 @@ const clickHandler = (apiToken, audioUrl, setResponseStatus, setIsLoading) => {
       "content-type": "application/json"
     }
   });
-  assembly
+  
+  if(audioUrl) {
+    assembly
     .post("/transcript", {
       audio_url: audioUrl
     })
@@ -18,5 +20,6 @@ const clickHandler = (apiToken, audioUrl, setResponseStatus, setIsLoading) => {
       console.log(res.data.status);
     })
     .catch((err) => console.log("in clickhandler", err));
+  }
 };
 export { clickHandler };
