@@ -87,9 +87,10 @@ input[type = "file"]{
     display: none;
   }
 .hero-upload-wrapper {
-      display:flex;
-      gap: 1rem;
-      align-items: center;
+    display:flex;
+    gap: 1rem;
+    align-items: center;
+    margin: 1rem 0;
 }
 .filename {
     font-size: 1.5rem;
