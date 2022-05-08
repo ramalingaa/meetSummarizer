@@ -1,5 +1,5 @@
 import axios from "axios";
-const summarizeHandler = async (text, key, setIsLoading, setSummary) => {
+const summarizeHandler = async (text, key, setIsLoading, setSummary, setError) => {
   const config = {
     method: "POST",
     url: "https://api.oneai.com/api/v0/pipeline",
@@ -22,7 +22,7 @@ const summarizeHandler = async (text, key, setIsLoading, setSummary) => {
     }));
     setSummary(() => response.data.output[0].text);
   } catch (e) {
-    console.log("in summary", e);
+    setError((prev) => ({ ...prev, apiError: "Something went wrong please try again"}));
   }
 };
 export { summarizeHandler };

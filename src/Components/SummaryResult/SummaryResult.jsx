@@ -8,7 +8,7 @@ const SummaryResult = () => {
   return (
     <div className="summary-result-container">
       <h3 className="text-center">Find your summary below!</h3>
-      <div className="text-center">
+      {summary ? <p>{summary}</p> :<div className="text-center">
         {isLoading.isSummaryLoading && (
           <ReactLoading
             type="spinningBubbles"
@@ -17,7 +17,7 @@ const SummaryResult = () => {
           />
         )}
       </div>
-      <p>{summary}</p>
+      }
     </div>
   );
 };

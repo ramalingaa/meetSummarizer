@@ -12,7 +12,6 @@ const pasteUrlHandler = (e, setAudioUrl, setPasteFileUrl, setError) => {
         }
     })
     .catch((err) => {
-        console.log(err);
         setError((prev) => ({...prev, sizeError: err }));
     })
 }

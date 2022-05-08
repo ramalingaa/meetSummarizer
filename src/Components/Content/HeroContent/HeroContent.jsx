@@ -15,7 +15,7 @@ const HeroContent = () => {
   const [pasteFileUrl, setPasteFileUrl] = useState("");
   const [responseStatus, setResponseStatus] = useState({ status: "", id: "" });
   const [fileName, setFileName] = useState("");
-  const [error, setError] = useState({ sizeError: "" });
+  const [error, setError] = useState({ sizeError: "", apiError:"" });
   const url = "https://api.cloudinary.com/v1_1/demo/auto/upload";
   const apiToken = "57abb67a2c924791b6a26572ee153ca2";
   const key = "b1666e78-926a-4aa8-ad25-7da19547944a";
@@ -45,19 +45,21 @@ const HeroContent = () => {
               id: res.data.id,
             }));
           } else {
-            console.log(res.data.text);
-            summarizeHandler(res.data.text, key, setIsLoading, setSummary);
+            summarizeHandler(res.data.text, key, setIsLoading, setSummary, setError);
           }
         })
-        .catch((err) => console.error(err));
+        .catch((err) => {
+          setError((prev) => ({ ...prev, apiError: "Something went wrong please try again"}));
+          console.error(err)
+
+        });
     }
   }, [responseStatus]);
-  console.log(audioUrl);
   return (
     <main className="hero">
       <div className="hero-wrapper">
         <div className="hero-header">
-          <h4>Summarize your favorite Podcasts and more with just a click !</h4>
+          <h4>Turn your Audio files into Summaries with just a click !</h4>
         </div>
         <div className="hero-content-cont">
           <div className="hero-action-cont">
@@ -85,6 +87,8 @@ const HeroContent = () => {
               <ReactLoading type="bars" className="loader" />
             )}
             <p className="error-msg">{error.sizeError}</p>
+            <p className="error-msg">{error.apiError}</p>
+            <p className = "or-text">OR</p>
             <input
               className="hero-input"
               type="url"
@@ -106,7 +110,8 @@ const HeroContent = () => {
                   apiToken,
                   audioUrl,
                   setResponseStatus,
-                  setIsLoading
+                  setIsLoading,
+                  setError
                 )
               }
             >
@@ -115,6 +120,7 @@ const HeroContent = () => {
           </div>
         </div>
       </div>
+      
     </main>
   );
 };
