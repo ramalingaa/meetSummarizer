@@ -5,13 +5,13 @@ const summarizeHandler = async (text, key, setIsLoading, setSummary) => {
     url: "https://api.oneai.com/api/v0/pipeline",
     headers: {
       "api-key": key,
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     },
     data: {
       text: text,
       input_type: "article",
-      steps: [{ skill: "summarize", params: { find_origins: true } }]
-    }
+      steps: [{ skill: "summarize", params: { find_origins: true } }],
+    },
   };
   try {
     const response = await axios(config);
