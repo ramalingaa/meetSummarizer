@@ -10,7 +10,7 @@ const changeHandler = (
     let file = e.target.files[0];
     setFileName(() => e.target.files[0].name);
     if (file.size < 2097152) {
-      setError((prev) => ({ ...prev, sizeError: "" }));
+      setError(() => ({ sizeError: "", apiError:"" }));
       setIsLoading((prev) => ({ ...prev, isUploadLoading: true }));
       const formData = new FormData();
       formData.append("file", file);
@@ -27,7 +27,7 @@ const changeHandler = (
           setIsLoading((prev) => ({ ...prev, isUploadLoading: false }));
         })
         .catch((e) => {
-          console.log("in url generator", e);
+          setError((prev) => ({ ...prev, apiError: "Something went wrong please try again"}));
         });
     } else {
       setError((prev) => ({

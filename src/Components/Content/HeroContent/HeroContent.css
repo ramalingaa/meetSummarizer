@@ -8,11 +8,14 @@
     justify-content: center;
     align-items: center;
 }
-
+.or-text {
+    padding: 0.5rem 3rem;
+    font-size: 1.5rem;
+}
 .hero-header{
-    width: 50%;
-    margin-left: 0;
-    text-align: left;
+    width: 90%;
+    margin: auto;
+    text-align: center;
 }
 
 .hero-wrapper{
@@ -27,12 +30,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 1rem;
 }
 
 .hero-action-cont{
     display: flex;
     flex-direction: column;
-    gap: 1rem;
     flex-grow: 1;
 }
 
@@ -57,8 +60,8 @@
 }
 
 .cta-btn-secondary{
-    border:2px solid var(--primary-color) ;
-    color: var(--primary-color) ;
+    border:2px solid var(--white-color) ;
+    color: var(----white-color) ;
     background: none;
     padding: 1rem;
     font-size: 1.3rem;
@@ -79,7 +82,7 @@
     padding: 0.7rem;
     width: 80%;
     font-size: 1.2rem;
-    border: 2px solid var(--primary-color);
+    border: 2px solid var(--white-color);
     border-radius: 0.4rem;
 }
 
@@ -90,7 +93,6 @@ input[type = "file"]{
     display:flex;
     gap: 1rem;
     align-items: center;
-    margin: 1rem 0;
 }
 .filename {
     font-size: 1.5rem;
